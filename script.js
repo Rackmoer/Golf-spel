@@ -47,10 +47,18 @@ function draw() {
   }
 }
 
-function mouseClicked(){
+function mousePressed() {
   lineX = mouseX;
   lineY = mouseY;
-  
+
+}
+
+function mouseReleased() {
+ 
+}
+
+function mouseClicked(){
+ 
   
   let vx = 5;
 
