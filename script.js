@@ -10,6 +10,7 @@ class Bal{
     this.gravity = 1.05
     }
 
+
     vx = 0
   
     draw(){
@@ -31,23 +32,41 @@ class Bal{
     }
  }
 }
+
+// class blok{
+// constructor(x,y,w,h,vx,vy,c)  
+//   this.bx = x;
+//   this.by = y;
+//   this.bwidth = w;
+//   this.bheight = h;
+//   this.bvx = vx;
+//   this.bvy = vy;
+//   this.bcolor = c;
+// draw(){
+//   ellipse(this.x,this.y,this.width,this.height)
+    
+}
+
+
   
  var bal1, bal2, bal3, bal4;
  var lineX, lineY;
+ var blok1; 
 
   function setup(){
   createCanvas(800, 400);
   bal1 = new Bal(400,200,25,25, 0, 0,'white');
- 
+  // blok1 = new blok(400,200,25,25, 0, 0,'white');
 }
 
 
 function draw() {
   background("lightblue");
   bal1.draw();
+  if(lineX){
+    line(lineX, lineY, mouseX, mouseY);	
+  }
 
-  
-}
 
 function mousePressed() {
   lineX = mouseX;
@@ -72,3 +91,27 @@ function mouseClicked(){
     bal1.vy = distY / 10 * -1;
   
 }
+
+
+
+
+// function draw() {
+//   background(225);
+
+//   fill("white");
+//   rect(block.x, block.y, block.w, block.h);
+
+//   if (x < block.x + block.w && x + w > block.x) {
+//     fill("red");
+//   }
+//   else {
+//     fill("green");
+//   }
+
+
+//   rect(x, y, w, h);
+//   x = x + vx;
+
+
+//   }
+// }
