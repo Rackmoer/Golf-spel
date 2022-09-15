@@ -7,7 +7,7 @@ class Bal{
     this.vx = vx;
     this.vy = vy;
     this.color = c;
-    this.gravity = 1.1
+    this.gravity = 1.05
     }
 
     vx = 0
@@ -45,9 +45,7 @@ class Bal{
 function draw() {
   background("lightblue");
   bal1.draw();
-  if(lineX){
-    line(lineX, lineY, mouseX, mouseY);	
-  }
+
   
 }
 
