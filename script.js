@@ -22,11 +22,11 @@ class Bal{
     this.y = this.y + this.vy;
     
     //collision
-    if (this.x > 770 || this.x < 0){
+    if (this.x > 800 || this.x < 0){
     this.vx = this.vx * -1;
     }
    
-    if (this.y > 370 || this.y < 0){
+    if (this.y > 400 || this.y < 0){
     this.vy = this.vy * -1; 
       
     }
@@ -48,7 +48,8 @@ class Bal{
 // }
 
 var bal1, bal2, bal3, bal4;
-var lineX, lineY;var blok1; 
+var lineX, lineY;
+var blok1; 
 
 function setup(){
   createCanvas(800, 400);
@@ -61,24 +62,26 @@ function draw() {
   background("lightblue");
   bal1.draw();
   if(lineX){
-    line(lineX, lineY, mouseX, mouseY);	
+    line(bal1.x, bal1.y, mouseX, mouseY);	
   }
 }
 
 function mousePressed() {
-  lineX = mouseX;
-  lineY = mouseY;
-
+  
 }
 
 function mouseReleased() {
 lineX = 0
 lineY = 0  
+
+ 
 }
 
 function mouseClicked(){
- 
-  
+  if (bal1.vx > 0.005 || bal1.vy > 0.005){
+    vx = 0
+  }
+  else{
     let vx = 0
     let distX = mouseX - bal1.x;
     let distY = bal1.y - mouseY;
@@ -87,7 +90,7 @@ function mouseClicked(){
     let vy = speedY;
     bal1.vx = distX / 10;
     bal1.vy = distY / 10 * -1;
-  
+  }
 }
 
 // function draw() {
