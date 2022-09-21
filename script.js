@@ -20,7 +20,7 @@ class Bal{
     this.vy /= this.gravity
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
-
+    
     //collision
     if (this.x > 770 || this.x < 0){
     this.vx = this.vx * -1;
@@ -43,17 +43,14 @@ class Bal{
 //   this.bvy = vy;
 //   this.bcolor = c;
 // draw(){
-//   ellipse(this.x,this.y,this.width,this.height)
+//   rect(this.x,this.y,this.width,this.height)
     
-}
+// }
 
+var bal1, bal2, bal3, bal4;
+var lineX, lineY;var blok1; 
 
-  
- var bal1, bal2, bal3, bal4;
- var lineX, lineY;
- var blok1; 
-
-  function setup(){
+function setup(){
   createCanvas(800, 400);
   bal1 = new Bal(400,200,25,25, 0, 0,'white');
   // blok1 = new blok(400,200,25,25, 0, 0,'white');
@@ -66,7 +63,7 @@ function draw() {
   if(lineX){
     line(lineX, lineY, mouseX, mouseY);	
   }
-
+}
 
 function mousePressed() {
   lineX = mouseX;
@@ -75,7 +72,8 @@ function mousePressed() {
 }
 
 function mouseReleased() {
- 
+lineX = 0
+lineY = 0  
 }
 
 function mouseClicked(){
@@ -91,9 +89,6 @@ function mouseClicked(){
     bal1.vy = distY / 10 * -1;
   
 }
-
-
-
 
 // function draw() {
 //   background(225);
