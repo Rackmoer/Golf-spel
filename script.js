@@ -1,6 +1,8 @@
 
 var gameState = 0;
 
+
+
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
@@ -19,10 +21,6 @@ function startGame(){
   text("PRESS 1 TO START GAME", width/2,height/2);
   
 }
-
-
-   
-
   
   
   var bal1, bal2, bal3, bal4;
@@ -40,6 +38,7 @@ function startGame(){
 
   if(gameState == 0){
     startGame();
+    
   } else if(gameState == 1){
     playGame();
   }
