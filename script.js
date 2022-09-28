@@ -1,10 +1,10 @@
 
-let gameState = 0;
+var gameState = 0;
 
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
-    gameState += 1;
+    gameState = 1;
 
   } else if(gameState == 2){
     gameState = 0;
@@ -44,7 +44,7 @@ function startGame(){
       this.y = this.y + this.vy;
       
       //collision
-      if (this.x > 800 || this.x < 0){
+      if (this.x > 795 || this.x < 25){
       this.vx = this.vx * -1;
       }
      
