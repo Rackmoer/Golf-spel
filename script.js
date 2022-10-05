@@ -44,27 +44,23 @@ function startGame(){
       this.y = this.y + this.vy;
       
    if(this.x <= 500 && this.x >= 400 && this.y <= 220 && this.y >= 200 || this.x <= 500 && this.x >= 400 && this.y < 300 && this.y >= 280 ){
-     console.log("blok")
      this.vy = this.vy * -1;
    } 
    if(this.x <= 500 && this.x >= 400 && this.y <= 295 && this.y >= 205 ){
-     console.log("blok")
      this.vx = this.vx * -1;
    }
-
-      
-    if(this.x <= 0 || this.x >= 800 || this.y <= 0  || this.y >= 400){
-     console.log("bots");
-  }
     //collision
-    if (this.x > 800 || this.x < 0){
+    if (this.x > 1600 || this.x < 0){
     this.vx = this.vx * -1;
     }
    
     if (this.y > 400 || this.y < 0){
-    this.vy = this.vy * -1; 
-      
+    this.vy = this.vy * -1;  
     }
+  if(this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007){
+      gameState += 1;
+   }
+        
  }
 }  
 
@@ -88,7 +84,7 @@ class Blok {
   var blok1; 
   
   function setup(){
-    createCanvas(800, 400);
+    createCanvas(1600, 400);
     bal1 = new Bal(100,200,25,25, 0, 0,'white');
     blok1 = new Blok(400, 200, 100, 100, 'white');
   }
@@ -99,8 +95,12 @@ class Blok {
 
   if(gameState == 0){
     startGame();
-  } else if(gameState == 1){
+  } 
+  else if(gameState == 1){
     playGame();
+  }
+  else if(gameState == 2){
+  endGame();
   }
   }
 
@@ -144,15 +144,16 @@ class Blok {
 function playGame(){
    background("lightblue");
   bal1.draw();
+  ellipse(1500,200,30,30);
   blok1.draw();
   if(lineX){
     line(lineX, lineY, mouseX, mouseY);	
   }
 }
 // if bal1 collision with hole +1 op gamestate
-// function endGame(){
-// background("lightyellow");
-//   textAlign(CENTER);
-//   textSize(20);
-//   text("You win!!!!", width/2,height/2);
-// }
+function endGame(){
+background("black");
+  textAlign(CENTER);
+  textSize(20);
+  text("You win!!!!", width/2,height/2);
+}
