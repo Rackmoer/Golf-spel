@@ -1,12 +1,10 @@
 
-var gameState = 0;
-
-
+let gameState = 0;
 
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
-    gameState = 1;
+    gameState += 1;
 
   } else if(gameState == 2){
     gameState = 0;
@@ -21,15 +19,78 @@ function startGame(){
   text("PRESS 1 TO START GAME", width/2,height/2);
   
 }
-  
-  
+
+
+   
+  class Bal{
+      constructor(x,y,w,h,vx,vy,c){
+      this.x = x;
+      this.y = y;
+      this.width = w;
+      this.height = h;
+      this.vx = vx;
+      this.vy = vy;
+      this.color = c;
+      this.gravity = 1.05
+      }
+      
+    
+      draw(){
+      fill(this.color)
+      ellipse(this.x,this.y,this.width,this.height)
+      this.vx /= this.gravity
+      this.vy /= this.gravity
+      this.x = this.x + this.vx;
+      this.y = this.y + this.vy;
+      
+   if(this.x <= 500 && this.x >= 400 && this.y <= 220 && this.y >= 200 || this.x <= 500 && this.x >= 400 && this.y < 300 && this.y >= 280 ){
+     console.log("blok")
+     this.vy = this.vy * -1;
+   } 
+   if(this.x <= 500 && this.x >= 400 && this.y <= 295 && this.y >= 205 ){
+     console.log("blok")
+     this.vx = this.vx * -1;
+   }
+
+      
+    if(this.x <= 0 || this.x >= 800 || this.y <= 0  || this.y >= 400){
+     console.log("bots");
+  }
+    //collision
+    if (this.x > 800 || this.x < 0){
+    this.vx = this.vx * -1;
+    }
+   
+    if (this.y > 400 || this.y < 0){
+    this.vy = this.vy * -1; 
+      
+    }
+ }
+}  
+
+
+class Blok {
+  constructor(x, y, w, h, c) {
+    this.bx = x;
+    this.by = y;
+    this.bwidth = w;
+    this.bheight = h;
+    this.bcolor = c;
+  }
+
+  draw() {
+    rect(this.bx, this.by, this.bwidth, this.bheight);
+  }
+}
+
   var bal1, bal2, bal3, bal4;
   var lineX, lineY;
   var blok1; 
   
   function setup(){
     createCanvas(800, 400);
-    bal1 = new Bal(400,200,25,25, 0, 0,'white');
+    bal1 = new Bal(100,200,25,25, 0, 0,'white');
+    blok1 = new Blok(400, 200, 100, 100, 'white');
   }
   
     
@@ -38,7 +99,6 @@ function startGame(){
 
   if(gameState == 0){
     startGame();
-    
   } else if(gameState == 1){
     playGame();
   }
@@ -84,6 +144,7 @@ function startGame(){
 function playGame(){
    background("lightblue");
   bal1.draw();
+  blok1.draw();
   if(lineX){
     line(lineX, lineY, mouseX, mouseY);	
   }
