@@ -8,7 +8,7 @@ class Ball {
     this.vy = vy;
     this.color = c;
     this.gravity = 1.05;
-
+   
     // for easy readable calculation
     this.halfWidth = this.w / 2;
     this.halfHeight = this.h / 2;
@@ -25,13 +25,6 @@ class Ball {
   }
 
   hit(block) {
-
-    if (this.x <= block.x && this.x >= block.x - block.w && this.y <= 220 && this.y >= 200 || this.x <= 500 && this.x >= 400 && this.y < 300 && this.y >= 280) {
-      this.vy = this.vy * -1;
-    }
-    if (this.x <= 500 && this.x >= 400 && this.y <= 295 && this.y >= 205) {
-      this.vx = this.vx * -1;
-    }
     //collision
     if (this.x > 1600 || this.x < 0) {
       this.vx = this.vx * -1;
@@ -69,21 +62,21 @@ class Ball {
         // collision is on the smallest overlap
         if (overlapX >= overlapY) {
           if (dy > 0) {
-            //this.y += overlapY;
+            this.vy = this.vy * -1;
             colliding = "top";
           }
           else {
-            //this.y -= overlapY;
+              this.vy = this.vy * -1;
             colliding = "bottom";
           }
         }
         else {
           if (dx > 0) {
-            //this.x += overlapX;
+              this.vx = this.vx * -1;
             colliding = "left";
           }
           else {
-            //this.x -= overlapX;
+              this.vx = this.vx * -1;
             colliding = "right";
           }
         }
@@ -97,3 +90,26 @@ class Ball {
   }
 
 }
+
+
+
+
+
+  //  if(this.x <= 500 && this.x >= 400 && this.y <= 220 && this.y >= 200 || this.x <= 500 && this.x >= 400 && this.y < 300 && this.y >= 280 ){
+  //    this.vy = this.vy * -1;
+  //  } 
+  //  if(this.x <= 500 && this.x >= 400 && this.y <= 295 && this.y >= 205 ){
+  //    this.vx = this.vx * -1;
+  //  }
+  //   //collision
+  //   if (this.x > 1600 || this.x < 0){
+  //   this.vx = this.vx * -1;
+  //   }
+   
+  //   if (this.y > 400 || this.y < 0){
+  //   this.vy = this.vy * -1;  
+  //   }
+  // if(this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007){
+  //     gameState += 1;
+  //  }
+        
