@@ -1,6 +1,6 @@
 
 let gameState = 0;
-
+var slagen = 0;
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
@@ -30,7 +30,13 @@ function setup() {
   blok1 = new Blok(400, 200, 100, 100, 'white');
 }
 
-
+class Text {
+  constructor(text, x, y, w) {
+    this.text = text;
+    this.x = x;
+    this.y = y;
+  }
+}
 function draw() {
   background(255);
 
@@ -46,6 +52,8 @@ function draw() {
 }
 
 
+
+  
 function mousePressed() {
   if (bal1.vx > 0.005 || bal1.vy > 0.005) {
     lineX = 0
@@ -61,11 +69,10 @@ function mouseReleased() {
   lineX = 0
   lineY = 0
 
-
 }
 
 function mouseClicked() {
-  if (bal1.vx > 0.005 || bal1.vy > 0.005) {
+  if (bal1.vx > 0.005 && bal1.vy > 0.005) {
     vx = 0
     lineX = 0
     lineY = 0
@@ -80,16 +87,21 @@ function mouseClicked() {
     bal1.vx = distX / 10;
     bal1.vy = distY / 10 * -1;
   }
+    if (bal1.vx > 0.005 || bal1.vy > 0.005) {
+  slagen = slagen + 1;
+  console.log(slagen);
+  }
 }
 
 function playGame() {
   background("lightblue");
   bal1.draw();
   ellipse(1500, 200, 30, 30);
+  text("slagen: " + slagen, 50, 30);
   blok1.draw();
   let side = bal1.checkCollision(blok1);
   console.log("checkCollision", side);
-
+  
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
   }

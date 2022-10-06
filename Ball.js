@@ -12,8 +12,21 @@ class Ball {
     // for easy readable calculation
     this.halfWidth = this.w / 2;
     this.halfHeight = this.h / 2;
-  }
 
+
+
+     if (this.x > 1600 || this.x < 0) {
+      this.vx = this.vx * -1;
+    }
+
+    if (this.y > 400 || this.y < 0) {
+      this.vy = this.vy * -1;
+    }
+    if (this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007) {
+      gameState += 1;
+    }
+  }
+  
 
   draw() {
     fill(this.color)
@@ -26,16 +39,7 @@ class Ball {
 
   hit(block) {
     //collision
-    if (this.x > 1600 || this.x < 0) {
-      this.vx = this.vx * -1;
-    }
 
-    if (this.y > 400 || this.y < 0) {
-      this.vy = this.vy * -1;
-    }
-    if (this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007) {
-      gameState += 1;
-    }
 
   }
 
