@@ -22,12 +22,17 @@ function startGame() {
 
 var bal1, bal2, bal3, bal4;
 var lineX, lineY;
-var blok1;
-
+var blok = [];
+function addObb(x,y,w,h){
+  blok.push(new Blok(x, y, w, h, 'white'))
+}
 function setup() {
   createCanvas(1600, 400);
   bal1 = new Ball(100, 200, 25, 25, 0, 0, 'white');
-  blok1 = new Blok(400, 200, 100, 100, 'white');
+  addObb(400,200,100,100)
+  addObb(1000,200,100,100)
+  addObb(0,0,1600,10)
+  addObb(0,390,1600,10)
 }
 
 class Text {
@@ -35,6 +40,7 @@ class Text {
     this.text = text;
     this.x = x;
     this.y = y;
+    this.w = w;
   }
 }
 function draw() {
@@ -53,7 +59,7 @@ function draw() {
 
 
 
-  
+
 function mousePressed() {
   if (bal1.vx > 0.005 || bal1.vy > 0.005) {
     lineX = 0
@@ -72,10 +78,13 @@ function mouseReleased() {
 }
 
 function mouseClicked() {
-  if (bal1.vx > 0.005 && bal1.vy > 0.005) {
-    vx = 0
-    lineX = 0
-    lineY = 0
+  if (bal1.vx >= 0.005 && bal1.vy >= 0.005) {
+    if (bal1.vx <= -0.005 && bal1.vy <= -0.005) {
+      bal1.vy = 0
+      bal1.vx = 0
+      lineX = 0
+      lineY = 0
+    }
   }
   else {
     let vx = 0
@@ -87,9 +96,9 @@ function mouseClicked() {
     bal1.vx = distX / 10;
     bal1.vy = distY / 10 * -1;
   }
-    if (bal1.vx > 0.005 || bal1.vy > 0.005) {
-  slagen = slagen + 1;
-  console.log(slagen);
+  if (bal1.vx > 0.005 || bal1.vy > 0.005) {
+    slagen = slagen + 1;
+    console.log(slagen);
   }
 }
 
@@ -98,10 +107,9 @@ function playGame() {
   bal1.draw();
   ellipse(1500, 200, 30, 30);
   text("slagen: " + slagen, 50, 30);
-  blok1.draw();
-  let side = bal1.checkCollision(blok1);
-  console.log("checkCollision", side);
-  
+  blok.forEach((b) => {b.draw();bal1.checkCollision(b)})
+
+
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
   }

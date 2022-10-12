@@ -8,25 +8,17 @@ class Ball {
     this.vy = vy;
     this.color = c;
     this.gravity = 1.05;
-   
+
     // for easy readable calculation
     this.halfWidth = this.w / 2;
     this.halfHeight = this.h / 2;
 
 
-
-     if (this.x > 1600 || this.x < 0) {
-      this.vx = this.vx * -1;
-    }
-
-    if (this.y > 400 || this.y < 0) {
-      this.vy = this.vy * -1;
-    }
-    if (this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007) {
-      gameState += 1;
-    }
+    // if (this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007) {
+    //   gameState += 1;
+    // }
   }
-  
+
 
   draw() {
     fill(this.color)
@@ -36,26 +28,26 @@ class Ball {
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
   }
-
+    
   hit(block) {
     //collision
 
 
   }
-
+  
   checkCollision(block) {
-    
+
     let colliding = false;
     // calculate difference from x and y axis centres
     let dx = (this.x + this.halfWidth) - (block.x + block.halfWidth);
-    let dy = (this.y + this.halfHeight) - (block.y + block.halfHeight);    
-    
+    let dy = (this.y + this.halfHeight) - (block.y + block.halfHeight);
+
     let combinedHalfWidths = this.halfWidth + block.halfWidth;
     let combinedHalfHeights = this.halfHeight + block.halfHeight;
 
     // x-axis collision?
     if (Math.abs(dx) < combinedHalfWidths) {
-      
+
 
       // y-axis collision?
       if (Math.abs(dy) < combinedHalfHeights) {
@@ -70,22 +62,22 @@ class Ball {
             colliding = "top";
           }
           else {
-              this.vy = this.vy * -1;
+            this.vy = this.vy * -1;
             colliding = "bottom";
           }
         }
         else {
           if (dx > 0) {
-              this.vx = this.vx * -1;
+            this.vx = this.vx * -1;
             colliding = "left";
           }
           else {
-              this.vx = this.vx * -1;
+            this.vx = this.vx * -1;
             colliding = "right";
           }
         }
+        
 
-        //showDebug({ overlapX:overlapX, overlapY:overlapY, dx:dx, dy:dy, colliding:colliding});
       }
 
 
@@ -109,11 +101,10 @@ class Ball {
   //   if (this.x > 1600 || this.x < 0){
   //   this.vx = this.vx * -1;
   //   }
-   
+
   //   if (this.y > 400 || this.y < 0){
   //   this.vy = this.vy * -1;  
   //   }
   // if(this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007){
   //     gameState += 1;
   //  }
-        
