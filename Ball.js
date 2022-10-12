@@ -14,9 +14,7 @@ class Ball {
     this.halfHeight = this.h / 2;
 
 
-    // if (this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007) {
-    //   gameState += 1;
-    // }
+
   }
 
 
@@ -93,21 +91,3 @@ class Ball {
 
 
 
-
-  //  if(this.x <= 500 && this.x >= 400 && this.y <= 220 && this.y >= 200 || this.x <= 500 && this.x >= 400 && this.y < 300 && this.y >= 280 ){
-  //    this.vy = this.vy * -1;
-  //  } 
-  //  if(this.x <= 500 && this.x >= 400 && this.y <= 295 && this.y >= 205 ){
-  //    this.vx = this.vx * -1;
-  //  }
-  //   //collision
-  //   if (this.x > 1600 || this.x < 0){
-  //   this.vx = this.vx * -1;
-  //   }
-
-  //   if (this.y > 400 || this.y < 0){
-  //   this.vy = this.vy * -1;  
-  //   }
-  // if(this.x <= 1525 && this.x >= 1500 && this.y <= 230 && this.y >= 200 && this.vx <= 0.007 && this.vy <= 0.007){
-  //     gameState += 1;
-  //  }

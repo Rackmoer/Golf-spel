@@ -107,13 +107,19 @@ function playGame() {
   background("lightblue");
   bal1.draw();
   ellipse(1500, 200, 30, 30);
-  text("slagen: " + slagen, 50, 30);
+  text("slagen: " + slagen,70, 30);
   blok.forEach((b) => {b.draw();bal1.checkCollision(b)})
 
 
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
   }
+  if (bal1.x > 1500 && bal1.x < 1530 && bal1.y > 200 && bal1.y < 230) {
+     gameState += 1;
+  }
+    
+
+  
 }
 // if bal1 collision with hole +1 op gamestate
 function endGame() {
