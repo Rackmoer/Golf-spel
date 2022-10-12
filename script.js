@@ -1,6 +1,11 @@
 
 let gameState = 0;
 var slagen = 0;
+
+function preload() {
+golfbal = loadImage('img/golfbal2.png');
+}
+
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {

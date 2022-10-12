@@ -22,7 +22,7 @@ class Ball {
 
   draw() {
     fill(this.color)
-    ellipse(this.x, this.y, this.w, this.h)
+    image(golfbal, this.x, this.y, this.w, this.h)
     this.vx /= this.gravity
     this.vy /= this.gravity
     this.x = this.x + this.vx;
