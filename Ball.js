@@ -22,25 +22,28 @@ class Ball {
 
   draw() {
     fill(this.color)
-    image(golfbal, this.x, this.y, this.w, this.h)
+    ellipse(this.x, this.y, this.w, this.h)
     this.vx /= this.gravity
     this.vy /= this.gravity
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
+    this.nx = this.x + this.vx;
+    this.ny = this.y + this.vy;
   }
-    
+
   hit(block) {
     //collision
 
 
   }
-  
-  checkCollision(block) {
 
+  checkCollision(block) {
+    let nx = bal1.x + bal1.vx;
+    let ny = bal1.y + bal1.vy;
     let colliding = false;
     // calculate difference from x and y axis centres
-    let dx = (this.x + this.halfWidth) - (block.x + block.halfWidth);
-    let dy = (this.y + this.halfHeight) - (block.y + block.halfHeight);
+    let dx = (nx + this.halfWidth) - (block.x + block.halfWidth);
+    let dy = (ny + this.halfHeight) - (block.y + block.halfHeight);
 
     let combinedHalfWidths = this.halfWidth + block.halfWidth;
     let combinedHalfHeights = this.halfHeight + block.halfHeight;
@@ -76,7 +79,7 @@ class Ball {
             colliding = "right";
           }
         }
-        
+
 
       }
 

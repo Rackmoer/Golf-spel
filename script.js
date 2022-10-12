@@ -1,11 +1,5 @@
-
 let gameState = 0;
 var slagen = 0;
-
-function preload() {
-golfbal = loadImage('img/golfbal2.png');
-}
-
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
@@ -38,6 +32,8 @@ function setup() {
   addObb(1000,200,100,100)
   addObb(0,0,1600,10)
   addObb(0,390,1600,10)
+  addObb(0,0,10,400)
+  addObb(1590,0,10,400)
 }
 
 class Text {
