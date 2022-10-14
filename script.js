@@ -7,6 +7,8 @@ function preload() {
   img = loadImage('img/naamspel.png');
   paal = loadImage('img/vlag.png');
   Golfbal = loadImage('img/Golfbal.png');
+  golfbal2 = loadImage('img/golfbal2.png');
+  golfclub = loadImage('img/golfclub.png');
 }
 
 
@@ -38,8 +40,10 @@ function startGame() {
   background("lightyellow");
   textAlign(CENTER);
   textSize(20);
-  text("PRESS ENTER TO START GAME", width / 2, height / 2);
-  image(img, 650, 50, 300, 300)
+  text("PRESS ENTER TO START GAME", 800, 400);
+  image(img, 600, 0, 400, 400)
+  image(golfclub, 1200, 120, 300, 300)
+  image(golfbal2, 200, 150, 300, 300)
 }
 
 var bal1, bal2, bal3, bal4;
@@ -70,18 +74,12 @@ function setup() {
   addObb(1100, 280, 250, 20);
   addObb(1100, 400, 250, 20);
   addObb(1350, 400, 20, 200);
-  image(img, 800, 200, 300, 300);
+  image(img, 600, 0, 400, 400);
   image(paal, 1550, 70, 300, 300);
+  image(golfclub, 650, 50, 300, 300)
+  image(golfbal2, 200, 150, 300, 300)
 }
 
-class Text {
-  constructor(text, x, y, w) {
-    this.text = text;
-    this.x = x;
-    this.y = y;
-    this.w = w;
-  }
-}
 function draw() {
   background(255);
 
@@ -144,7 +142,6 @@ function playGame() {
   text("hits: " + slagen, 70, 30);
   // add object 
   blok.forEach((b) => { b.draw(); bal1.checkCollision(b) })
-  image(Golfbal, bal1.x - 15, bal1.y - 15, bal1.w + 5, bal1.h + 5)
   // lijn op bal bij het schieten
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
@@ -155,7 +152,7 @@ function playGame() {
     bal1.y = 200
   }
 
-  image(paal, 1550, 70, 300, 300);
+  image(paal, 1503, -15, 120, 120);
 
 }
 // if bal1 collision with hole +1 op gamestate
@@ -163,7 +160,7 @@ function endGame() {
   background("black");
   text('Your score was: ' + slagen, 800, 500);
   text('Your highscore is: ' + highscore, 800, 550);
-  text('Press "R" to restart', 800, 420);
+  text('Press "R" to play again', 800, 420);
   textAlign(CENTER);
   textSize(20);
   if (slagen <= highscore) {
