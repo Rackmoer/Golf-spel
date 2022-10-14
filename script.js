@@ -2,13 +2,19 @@ let gameState = 0;
 var slagen = -1;
 function keyPressed() {
 
-  if (keyCode == 49 && gameState == 0) {
-    gameState += 1;
+  if (keyCode == 13 && gameState == 0) {
+    gameState = 1;
 
-  } else if (gameState == 2) {
+  }
+  else if (gameState == 2) {
     gameState = 0;
   }
+  if (keycode == 82 && gameState == 2) {
+    gameState = 0;
+    bal1.x == 100;
+    bal1.y == 200;
 
+  }
 }
 
 // beginscherm
@@ -16,7 +22,7 @@ function startGame() {
   background("lightyellow");
   textAlign(CENTER);
   textSize(20);
-  text("PRESS 1 TO START GAME", width / 2, height / 2);
+  text("PRESS ENTER TO START GAME", width / 2, height / 2);
 
 }
 

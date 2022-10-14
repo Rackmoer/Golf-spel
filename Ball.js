@@ -29,12 +29,6 @@ class Ball {
     this.ny = this.y + this.vy;
   }
 
-  hit(block) {
-    //collision
-
-
-  }
-
   checkCollision(block) {
     let nx = bal1.x + bal1.vx;
     let ny = bal1.y + bal1.vy;
