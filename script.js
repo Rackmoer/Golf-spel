@@ -6,6 +6,7 @@ let img;
 function preload() {
   img = loadImage('img/naamspel.png');
   paal = loadImage('img/vlag.png');
+  Golfbal = loadImage('img/Golfbal.png');
 }
 
 
@@ -25,6 +26,7 @@ function keyPressed() {
     gameState = 0;
     bal1.x == 100;
     bal1.y == 200;
+    slagen = 0;
 
   }
 }
@@ -32,7 +34,7 @@ function keyPressed() {
 // beginscherm
 function startGame() {
 
-  fill("black")
+  fill("black");
   background("lightyellow");
   textAlign(CENTER);
   textSize(20);
@@ -69,7 +71,7 @@ function setup() {
   addObb(1100, 400, 250, 20);
   addObb(1350, 400, 20, 200);
   image(img, 800, 200, 300, 300);
-  image(paal,1550, 70, 300, 300);
+  image(paal, 1550, 70, 300, 300);
 }
 
 class Text {
@@ -129,7 +131,6 @@ function mouseClicked() {
       bal1.vy = distY / 10 * -1;
       // slagen bijhouden
       slagen = slagen + 1;
-      console.log(slagen);
     }
   }
 
@@ -140,10 +141,10 @@ function playGame() {
   bal1.draw();
   ellipse(1550, 70, 30, 30);
   fill(210)
-  text("slagen: " + slagen, 70, 30);
+  text("hits: " + slagen, 70, 30);
   // add object 
   blok.forEach((b) => { b.draw(); bal1.checkCollision(b) })
-
+  image(Golfbal, bal1.x - 15, bal1.y - 15, bal1.w + 5, bal1.h + 5)
   // lijn op bal bij het schieten
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
