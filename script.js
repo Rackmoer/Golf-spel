@@ -1,15 +1,17 @@
 let gameState = 0;
 var slagen = -1;
+var highscore = 99999;
+
 function keyPressed() {
 
-  if (keyCode == 13 && gameState == 0) {
-    gameState = 1;
+  if (keyCode == 13) {
+    gameState += 1;
 
   }
   else if (gameState == 2) {
     gameState = 0;
   }
-  if (keycode == 82 && gameState == 2) {
+  if (keyCode == 82) {
     gameState = 0;
     bal1.x == 100;
     bal1.y == 200;
@@ -19,6 +21,7 @@ function keyPressed() {
 
 // beginscherm
 function startGame() {
+  fill("black")
   background("lightyellow");
   textAlign(CENTER);
   textSize(20);
@@ -36,6 +39,7 @@ function addObb(x, y, w, h) {
 function setup() {
   // alle losse opjecten 
   createCanvas(1600, 600);
+  scoretext = new Text(700, 400, 100)
   bal1 = new Ball(100, 200, 25, 25, 0, 0, 'white');
   addObb(400, 200, 100, 100)
   addObb(1000, 200, 100, 100)
@@ -121,7 +125,7 @@ function mouseClicked() {
 function playGame() {
   background(0, 135, 90);
   bal1.draw();
-  ellipse(1550, 70, 30, 30, "black");
+  ellipse(1550, 70, 30, 30);
   fill(210)
   text("slagen: " + slagen, 70, 30);
   // add object 
@@ -133,6 +137,8 @@ function playGame() {
   }
   if (bal1.x > 1535 && bal1.x < 1565 && bal1.y > 65 && bal1.y < 95 && bal1.vx <= 0.01 && bal1.vy <= 0.01 && bal1.vx >= -0.01 && bal1.vy >= -0.01) {
     gameState += 1;
+    bal1.x = 100;
+    bal1.y = 200
   }
 
 
@@ -141,7 +147,14 @@ function playGame() {
 // if bal1 collision with hole +1 op gamestate
 function endGame() {
   background("black");
+  text('Your score was: ' + slagen, 800, 500);
+  text('Your highscore is: ' + highscore, 800, 550);
+  text('Press "R" to restart', 800, 420);
   textAlign(CENTER);
   textSize(20);
-  text("You win!!!!" + slagen, width / 2, height / 2);
+  if (slagen <= highscore) {
+    highscore = slagen
+  }
+  text("You win!", width / 2, height / 2);
+
 }
