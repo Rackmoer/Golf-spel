@@ -40,8 +40,8 @@ class Ball {
     let ny = bal1.y + bal1.vy;
     let colliding = false;
     // calculate difference from x and y axis centres
-    let dx = (nx + this.halfWidth) - (block.x + block.halfWidth);
-    let dy = (ny + this.halfHeight) - (block.y + block.halfHeight);
+    let dx = (nx + this.halfWidth - 10) - (block.x + block.halfWidth);
+    let dy = (ny + this.halfHeight - 10) - (block.y + block.halfHeight);
 
     let combinedHalfWidths = this.halfWidth + block.halfWidth;
     let combinedHalfHeights = this.halfHeight + block.halfHeight;
