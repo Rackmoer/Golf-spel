@@ -1,5 +1,5 @@
 let gameState = 0;
-var slagen = 0;
+var slagen = -1;
 function keyPressed() {
 
   if (keyCode == 49 && gameState == 0) {
@@ -11,6 +11,7 @@ function keyPressed() {
 
 }
 
+// beginscherm
 function startGame() {
   background("lightyellow");
   textAlign(CENTER);
@@ -22,10 +23,12 @@ function startGame() {
 var bal1, bal2, bal3, bal4;
 var lineX, lineY;
 var blok = [];
+// maak een object
 function addObb(x, y, w, h) {
   blok.push(new Blok(x, y, w, h, 'white'))
 }
 function setup() {
+  // alle losse opjecten 
   createCanvas(1600, 600);
   bal1 = new Ball(100, 200, 25, 25, 0, 0, 'white');
   addObb(400, 200, 100, 100)
@@ -39,8 +42,11 @@ function setup() {
   addObb(500, 400, 320, 20)
   addObb(900, 200, 20, 400)
   addObb(1500, 0, 20, 200)
-
-
+  addObb(1000, 40, 20, 160)
+  addObb(1350, 140, 20, 160)
+  addObb(1100, 280, 250, 20)
+  addObb(1100, 400, 250, 20)
+  addObb(1350, 400, 20, 200)
 }
 
 class Text {
@@ -86,7 +92,7 @@ function mouseReleased() {
 }
 
 function mouseClicked() {
-
+  // bal mag alleen bewegen bij lage snelheid/ stilstaan 
   if (bal1.vx <= 0.005 && bal1.vy <= 0.005) {
     if (bal1.vx >= -0.005 && bal1.vy >= -0.005) {
 
@@ -98,24 +104,28 @@ function mouseClicked() {
       let vy = speedY;
       bal1.vx = distX / 10;
       bal1.vy = distY / 10 * -1;
+      // slagen bijhouden
       slagen = slagen + 1;
       console.log(slagen);
     }
   }
 
 }
+// gamestate 1 (main game)
 function playGame() {
-  background("lightblue");
+  background(0, 135, 90);
   bal1.draw();
-  ellipse(1550, 70, 30, 30);
+  ellipse(1550, 70, 30, 30, "black");
+  fill(210)
   text("slagen: " + slagen, 70, 30);
+  // add object 
   blok.forEach((b) => { b.draw(); bal1.checkCollision(b) })
 
-
+  // lijn op bal bij het schieten
   if (lineX) {
     line(lineX, lineY, mouseX, mouseY);
   }
-  if (bal1.x > 1550 && bal1.x < 1580 && bal1.y > 70 && bal1.y < 100) {
+  if (bal1.x > 1535 && bal1.x < 1565 && bal1.y > 65 && bal1.y < 95 && bal1.vx <= 0.01 && bal1.vy <= 0.01 && bal1.vx >= -0.01 && bal1.vy >= -0.01) {
     gameState += 1;
   }
 
