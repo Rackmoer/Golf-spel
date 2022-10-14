@@ -1,11 +1,21 @@
 let gameState = 0;
 var slagen = -1;
 var highscore = 99999;
+let img;
+
+function preload() {
+  img = loadImage('img/naamspel.png');
+  paal = loadImage('img/vlag.png');
+}
+
+
+
+
 
 function keyPressed() {
 
-  if (keyCode == 13) {
-    gameState += 1;
+  if (keyCode == 13 && gameState == 0) {
+    gameState = 1;
 
   }
   else if (gameState == 2) {
@@ -21,12 +31,13 @@ function keyPressed() {
 
 // beginscherm
 function startGame() {
+
   fill("black")
   background("lightyellow");
   textAlign(CENTER);
   textSize(20);
   text("PRESS ENTER TO START GAME", width / 2, height / 2);
-
+  image(img, 650, 50, 300, 300)
 }
 
 var bal1, bal2, bal3, bal4;
@@ -41,22 +52,24 @@ function setup() {
   createCanvas(1600, 600);
   scoretext = new Text(700, 400, 100)
   bal1 = new Ball(100, 200, 25, 25, 0, 0, 'white');
-  addObb(400, 200, 100, 100)
-  addObb(1000, 200, 100, 100)
-  addObb(0, 0, 1600, 10)
-  addObb(0, 590, 1600, 10)
-  addObb(0, 0, 10, 600)
-  addObb(1590, 0, 10, 600)
-  addObb(800, 0, 20, 400)
-  addObb(0, 400, 400, 20)
-  addObb(500, 400, 320, 20)
-  addObb(900, 200, 20, 400)
-  addObb(1500, 0, 20, 200)
-  addObb(1000, 40, 20, 160)
-  addObb(1350, 140, 20, 160)
-  addObb(1100, 280, 250, 20)
-  addObb(1100, 400, 250, 20)
-  addObb(1350, 400, 20, 200)
+  addObb(400, 200, 100, 100);
+  addObb(1000, 200, 100, 100);
+  addObb(0, 0, 1600, 10);
+  addObb(0, 590, 1600, 10);
+  addObb(0, 0, 10, 600);
+  addObb(1590, 0, 10, 600);
+  addObb(800, 0, 20, 400);
+  addObb(0, 400, 400, 20);
+  addObb(500, 400, 320, 20);
+  addObb(900, 200, 20, 400);
+  addObb(1500, 0, 20, 200);
+  addObb(1000, 40, 20, 160);
+  addObb(1350, 140, 20, 160);
+  addObb(1100, 280, 250, 20);
+  addObb(1100, 400, 250, 20);
+  addObb(1350, 400, 20, 200);
+  image(img, 800, 200, 300, 300);
+  image(paal,1550, 70, 300, 300);
 }
 
 class Text {
@@ -141,7 +154,7 @@ function playGame() {
     bal1.y = 200
   }
 
-
+  image(paal, 1550, 70, 300, 300);
 
 }
 // if bal1 collision with hole +1 op gamestate
